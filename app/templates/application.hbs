@@ -1,0 +1,26 @@
+<h2 id="title">ember-wormhole example</h2>
+
+<div class="container">
+
+<div class="section">
+  <p>dropdown on a box:</p>
+  {{card-thing name="foo"}}
+</div>
+
+<div class="section">
+  <p>..inside an overflow:scroll:</p>
+  <div class="outer-box">
+    {{card-thing name="bar"}}
+  </div>
+</div>
+
+<div class="section">
+  <p>..with a wormhole:</p>
+  <div class="outer-box">
+    {{card-thing name="baz" wormhole=true}}
+  </div>
+</div>
+
+</div>
+
+<div id="another-dimension"></div>
