@@ -1,13 +1,19 @@
 <div class="card-thing">
   <div class="name" >{{name}}</div>
-  <div class="menu-button" data-dropdown="drop1-{{elementId}}" aria-controls="drop1-{{elementId}}" aria-expanded="false">⚙</div>
 
-  {{#ember-wormhole to="another-dimension" renderInPlace=(not wormhole)}}
+  <div class="menu-button" data-dropdown="drop1-{{elementId}}" aria-controls="drop1-{{elementId}}" aria-expanded="false">⚙</div>
+  {{#ember-wormhole to="another-dimension" renderInPlace=(not wormhole) menuClicked="menuClicked"}}
     <ul id="drop1-{{elementId}}" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
+      {{#each menuOptions as |option|}}
+        <li><a href="#" {{action "menuClicked" option}}>{{option}}</a></li>
+      {{/each}}
     </ul>
   {{/ember-wormhole}}
 
 </div>
+
+{{!--
+We could actually solve this (simple, contrived) testcase by moving the <ul> down here,
+outside of .card-thing. Instead imagine that your button and its logically-connected menu
+items are nested a component or two deeper, e.g. within a component like card-controls.
+--}}

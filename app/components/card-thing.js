@@ -3,14 +3,14 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   wormhole: false,
   actions: {
-    menuClicked(){
-      console.log("clicked!");
+    menuClicked: function(option){
+      console.log("clicked " + option);
     }
   },
   didRender: function() {
-    console.log("rendered!");
     Ember.run.later(this, function(){
-      this.$().foundation('dropdown', 'reflow');
+      this.$(document).foundation('dropdown', 'reflow');
     }, 250);
-  }
+  },
+  menuOptions: ['asdf','qwer','zxcv']
 });
